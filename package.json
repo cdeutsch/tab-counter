@@ -1,0 +1,39 @@
+{
+  "name": "tab-count",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./lib/index.js",
+  "bin": {
+    "tab-count": "./lib/index.js"
+  },
+  "scripts": {
+    "tab-count": "ts-node src/index.ts",
+    "build": "ncc build src/index.ts -o lib",
+    "lint": "eslint src/ --ext .ts",
+    "refresh": "rm -rf ./node_modules ./package-lock.json && npm install",
+    "watch": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts"
+  },
+  "keywords": [],
+  "author": "cdeutsch",
+  "license": "ISC",
+  "dependencies": {
+    "clear": "^0.1.0",
+    "commander": "^8.1.0",
+    "figlet": "^1.5.2",
+    "kleur": "^4.1.4",
+    "node-fetch": "^2.6.0",
+    "npm": "^7.21.1",
+    "pretty-error": "^3.0.4"
+  },
+  "devDependencies": {
+    "@types/node-fetch": "^2.5.1",
+    "@typescript-eslint/eslint-plugin": "^4.30.0",
+    "@typescript-eslint/parser": "^4.30.0",
+    "@vercel/ncc": "^0.30.0",
+    "eslint": "^7.32.0",
+    "nodemon": "^2.0.12",
+    "prettier": "^2.3.2",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.4.2"
+  }
+}
