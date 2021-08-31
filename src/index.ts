@@ -1,11 +1,10 @@
-// cSpell:ignore xait
 require('dotenv').config();
 
 import axios from 'axios';
-// import clear from 'clear';
+import clear from 'clear';
 import { program } from 'commander';
 import figlet from 'figlet';
-import { magenta } from 'kleur';
+import { magenta, red } from 'kleur';
 import PrettyError from 'pretty-error';
 
 import { BrowserTabCounts, countTabs } from './tab-counter';
@@ -30,8 +29,6 @@ function myParseInt(value, dummyPrevious) {
 
 async function main() {
   try {
-    // clear();
-
     console.log(magenta(figlet.textSync('Tab Counts', { horizontalLayout: 'full' })));
 
     program
@@ -79,10 +76,10 @@ async function main() {
 
       // Send to Axiom.
       axios.post(
-        'https://cloud-dev-axiomtestlabs-co-hjbfhzqlmh1g.curlhub.io/api/v1/datasets/browser-tabs/ingest',
+        `https://cloud.dev.axiomtestlabs.co/api/v1/datasets/${process.env.AXIOM_DATASET}/ingest`,
         browserTabCounts,
         {
-          headers: { Authorization: `Bearer xait-a657bdad-c3c4-46cf-b783-876e7935649e` },
+          headers: { Authorization: `Bearer ${process.env.AXIOM_INGEST_TOKEN}` },
         }
       );
     }
@@ -101,6 +98,19 @@ async function main() {
   } catch (e) {
     console.error(pe.render(e));
   }
+}
+
+clear();
+
+if (!process.env.AXIOM_INGEST_TOKEN) {
+  console.log(red('AXIOM_INGEST_TOKEN needs to be added to the .env configuration.'));
+
+  process.exit();
+}
+if (!process.env.AXIOM_DATASET) {
+  console.log(red('AXIOM_DATASET needs to be added to the .env configuration.'));
+
+  process.exit();
 }
 
 main();
