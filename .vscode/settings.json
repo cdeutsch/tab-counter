@@ -66,6 +66,7 @@
     "tsconfig.json"
   ],
   "cSpell.words": [
+    "accum",
     "kleur",
     "promisify",
     "webhook"
