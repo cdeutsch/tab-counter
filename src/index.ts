@@ -74,14 +74,18 @@ async function main() {
 
       // return;
 
-      // Send to Axiom.
-      axios.post(
-        `https://cloud.dev.axiomtestlabs.co/api/v1/datasets/${process.env.AXIOM_DATASET}/ingest`,
-        browserTabCounts,
-        {
-          headers: { Authorization: `Bearer ${process.env.AXIOM_INGEST_TOKEN}` },
-        }
-      );
+      try {
+        // Send to Axiom.
+        axios.post(
+          `https://cloud.dev.axiomtestlabs.co/api/v1/datasets/${process.env.AXIOM_DATASET}/ingest`,
+          browserTabCounts,
+          {
+            headers: { Authorization: `Bearer ${process.env.AXIOM_INGEST_TOKEN}` },
+          }
+        );
+      } catch (err) {
+        console.error(red('Failed to send data to Axiom'), err);
+      }
     }
 
     if (options.schedule) {
