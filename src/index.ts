@@ -4,7 +4,7 @@ import axios from 'axios';
 import clear from 'clear';
 import { program } from 'commander';
 import figlet from 'figlet';
-import { magenta, red } from 'kleur';
+import { magenta, yellow, red } from 'kleur';
 import PrettyError from 'pretty-error';
 
 import { BrowserTabCounts, countTabs } from './tab-counter';
@@ -76,7 +76,7 @@ async function main() {
 
       try {
         // Send to Axiom.
-        axios.post(
+        await axios.post(
           `https://cloud.dev.axiomtestlabs.co/api/v1/datasets/${process.env.AXIOM_DATASET}/ingest`,
           browserTabCounts,
           {
@@ -84,7 +84,7 @@ async function main() {
           }
         );
       } catch (err) {
-        console.error(red('Failed to send data to Axiom'), err);
+        console.warn(yellow('\nFailed to send data to Axiom'), err);
       }
     }
 
