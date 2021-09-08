@@ -5,12 +5,9 @@ import clear from 'clear';
 import { program } from 'commander';
 import figlet from 'figlet';
 import { magenta, yellow, red } from 'kleur';
-import PrettyError from 'pretty-error';
 
 import { BrowserTabCounts, countTabs } from './tab-counter';
 import { delay, formatDate } from './utils';
-
-const pe = new PrettyError();
 
 const SUPPORTED_BROWSERS = [
   'Brave Browser',
@@ -101,7 +98,7 @@ async function main() {
 
     await run();
   } catch (e) {
-    console.error(pe.render(e));
+    console.error(e);
   }
 }
 
