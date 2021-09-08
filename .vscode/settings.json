@@ -15,7 +15,7 @@
     // only from the root of
     // your workspace
     "static": true, // static is generated output so ignore
-    "dist": true,
+    "lib": true,
     ".cache-loader": true
   },
   "[javascript]": {
