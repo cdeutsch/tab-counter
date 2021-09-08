@@ -22,6 +22,7 @@ const SUPPORTED_BROWSERS = [
   'Microsoft Edge Dev',
 ];
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function myParseInt(value, dummyPrevious) {
   // parseInt takes a string and an optional radix
   return parseInt(value);
@@ -90,7 +91,7 @@ async function main() {
 
     if (options.schedule) {
       // Do this every X minutes.
-      // tslint:disable-next-line: no-constant-condition
+      // eslint-disable-next-line no-constant-condition
       while (true) {
         await run();
         console.log('\n⏳️\n');

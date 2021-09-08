@@ -19,9 +19,9 @@ export async function countTabs(browserName: string, sampleTime: number): Promis
       const App = Application(`/Applications/${browserName}.app`);
 
       if (App.running()) {
-        let tabCounts: number[] = [];
+        const tabCounts: number[] = [];
 
-        for (let ii in App.windows) {
+        for (const ii in App.windows) {
           tabCounts.push(App.windows[ii].tabs.length);
         }
 
