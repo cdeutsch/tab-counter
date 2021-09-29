@@ -11,6 +11,7 @@ import { delay, formatDate } from './utils';
 
 const SUPPORTED_BROWSERS = [
   'Brave Browser',
+  'Brave Browser Beta',
   'Safari',
   'Google Chrome',
   'Google Chrome Canary',
